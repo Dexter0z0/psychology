@@ -77,13 +77,18 @@
             justify-content: center;
             font-size: 1.5rem;
             box-shadow: var(--shadow);
-            animation: pulse 2s infinite;
+            animation: pulse 2s infinite, rotate 10s linear infinite;
         }
 
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .logo-text {
@@ -578,6 +583,7 @@
         .illustration-item:nth-child(1) { animation-delay: 0.2s; }
         .illustration-item:nth-child(2) { animation-delay: 0.4s; }
         .illustration-item:nth-child(3) { animation-delay: 0.6s; }
+        .illustration-item:nth-child(4) { animation-delay: 0.8s; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -641,6 +647,121 @@
                 transform: translateY(-100px) rotate(360deg);
                 opacity: 0;
             }
+        }
+
+        /* New advanced animations */
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .bounce-in {
+            animation: bounceIn 1s ease-out forwards;
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid var(--accent);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent); }
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            from { box-shadow: 0 0 5px rgba(108, 99, 255, 0.5); }
+            to { box-shadow: 0 0 20px rgba(108, 99, 255, 0.8); }
+        }
+
+        .scale-on-hover {
+            transition: transform 0.3s ease;
+        }
+
+        .scale-on-hover:hover {
+            transform: scale(1.05);
+        }
+
+        .magnetic-effect {
+            transition: transform 0.3s ease;
+        }
+
+        .magnetic-effect:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .stagger-animation > * {
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+        .stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .morph-shape {
+            animation: morph 8s ease-in-out infinite;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        .neon-text {
+            text-shadow: 0 0 5px var(--accent), 0 0 10px var(--accent), 0 0 15px var(--accent), 0 0 20px var(--primary);
         }
 
         @media (max-width: 1024px) {
@@ -713,31 +834,37 @@
             <div class="slide active" id="slide-1">
                 <div class="content">
                     <div class="text-content">
-                        <h1 class="slide-title title-animation">The Driving Forces Within</h1>
-                        <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: var(--accent);" class="title-animation">Motives, Needs & The Emotional-Volitional Sphere</h2>
+                        <h1 class="slide-title title-animation neon-text">The Driving Forces Within</h1>
+                        <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: var(--accent);" class="title-animation typewriter">Motives, Needs & The Emotional-Volitional Sphere</h2>
                         
                         <div style="margin-top: 50px;" class="title-animation">
-                            <div class="group-badge floating">
+                            <div class="group-badge floating pulse-glow">
                                 <i class="fas fa-users" style="margin-right: 10px;"></i> Group: GM 24-05
                             </div>
                         </div>
                     </div>
                     <div class="visual-content">
-                        <div class="graphic">
+                        <div class="graphic morph-shape">
                             <div class="illustration-container">
                                 <div class="illustration-item floating">
                                     <div class="illustration-icon">
-                                        <i class="fas fa-mind-share"></i>
+                                        <i class="fas fa-bullseye"></i>
                                     </div>
                                     <p>Motives</p>
                                 </div>
                                 <div class="illustration-item floating" style="animation-delay: 0.3s;">
                                     <div class="illustration-icon">
+                                        <i class="fas fa-battery-full"></i>
+                                    </div>
+                                    <p>Needs</p>
+                                </div>
+                                <div class="illustration-item floating" style="animation-delay: 0.6s;">
+                                    <div class="illustration-icon">
                                         <i class="fas fa-heart"></i>
                                     </div>
                                     <p>Emotions</p>
                                 </div>
-                                <div class="illustration-item floating" style="animation-delay: 0.6s;">
+                                <div class="illustration-item floating" style="animation-delay: 0.9s;">
                                     <div class="illustration-icon">
                                         <i class="fas fa-brain"></i>
                                     </div>
@@ -757,38 +884,38 @@
             
             <!-- Slide 2: Agenda & Roadmap -->
             <div class="slide" id="slide-2">
-                <h1 class="slide-title">Agenda & Roadmap</h1>
+                <h1 class="slide-title slide-in-left">Agenda & Roadmap</h1>
                 <div class="content">
-                    <div class="text-content">
+                    <div class="text-content slide-in-left">
                         <h2 class="slide-subtitle">Today's Journey</h2>
-                        <div class="journey-list">
-                            <div class="journey-item">
+                        <div class="journey-list stagger-animation">
+                            <div class="journey-item magnetic-effect">
                                 <div class="journey-number">1</div>
                                 <div>Fundamentals: Motives vs. Needs</div>
                             </div>
-                            <div class="journey-item">
+                            <div class="journey-item magnetic-effect">
                                 <div class="journey-number">2</div>
                                 <div>Categorization: The Types of Motives</div>
                             </div>
-                            <div class="journey-item">
+                            <div class="journey-item magnetic-effect">
                                 <div class="journey-number">3</div>
                                 <div>Structure: The Hierarchy of Motives</div>
                             </div>
-                            <div class="journey-item">
+                            <div class="journey-item magnetic-effect">
                                 <div class="journey-number">4</div>
                                 <div>The Human System: Emotional-Volitional Sphere</div>
                             </div>
-                            <div class="journey-item">
+                            <div class="journey-item magnetic-effect">
                                 <div class="journey-number">5</div>
                                 <div>Interaction: How Emotion and Will Work Together</div>
                             </div>
-                            <div class="journey-item">
+                            <div class="journey-item magnetic-effect">
                                 <div class="journey-number">6</div>
                                 <div>Key Takeaways</div>
                             </div>
                         </div>
                     </div>
-                    <div class="visual-content">
+                    <div class="visual-content slide-in-right">
                         <div class="graphic">
                             <div style="text-align: center;">
                                 <i class="fas fa-road floating" style="font-size: 10rem; color: var(--accent);"></i>
@@ -807,11 +934,11 @@
             
             <!-- Slide 3: Motives vs. Needs -->
             <div class="slide" id="slide-3">
-                <h1 class="slide-title">1. Motives vs. Needs: The Core Concepts</h1>
+                <h1 class="slide-title slide-in-left">1. Motives vs. Needs: The Core Concepts</h1>
                 <div class="content">
-                    <div class="text-content">
-                        <div class="concept-comparison">
-                            <div class="concept-card">
+                    <div class="text-content slide-in-left">
+                        <div class="concept-comparison stagger-animation">
+                            <div class="concept-card magnetic-effect shimmer">
                                 <div class="concept-icon">
                                     <i class="fas fa-tint"></i>
                                 </div>
@@ -820,7 +947,7 @@
                                 <p>The <span class="highlight">internal source</span> of motivation.</p>
                                 <p style="margin-top: 15px;"><strong>Examples:</strong> Hunger, Thirst, Need for Connection.</p>
                             </div>
-                            <div class="concept-card">
+                            <div class="concept-card magnetic-effect shimmer">
                                 <div class="concept-icon">
                                     <i class="fas fa-bolt"></i>
                                 </div>
@@ -831,7 +958,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="visual-content">
+                    <div class="visual-content slide-in-right">
                         <div class="graphic">
                             <div style="text-align: center;">
                                 <i class="fas fa-balance-scale floating" style="font-size: 10rem; color: var(--accent);"></i>
@@ -850,21 +977,21 @@
             
             <!-- Slide 4: The Motivation Cycle -->
             <div class="slide" id="slide-4">
-                <h1 class="slide-title">The Motivation Cycle</h1>
+                <h1 class="slide-title slide-in-left">The Motivation Cycle</h1>
                 <div class="content">
-                    <div class="text-content">
+                    <div class="text-content slide-in-left">
                         <h2 class="slide-subtitle">The Fundamental Process</h2>
-                        <div style="text-align: center; margin-bottom: 30px; font-size: 1.5rem; font-weight: bold; color: var(--accent);">
+                        <div style="text-align: center; margin-bottom: 30px; font-size: 1.5rem; font-weight: bold; color: var(--accent);" class="pulse-glow">
                             Need → Drive/Motive → Goal-Directed Behavior → Need Reduction
                         </div>
-                        <ul>
+                        <ul class="stagger-animation">
                             <li>A need creates a state of tension.</li>
                             <li>This tension activates a motive.</li>
                             <li>The motive drives goal-oriented behavior.</li>
                             <li>Achieving the goal satisfies the need and reduces tension.</li>
                         </ul>
                     </div>
-                    <div class="visual-content">
+                    <div class="visual-content slide-in-right">
                         <div class="graphic">
                             <div class="cycle-diagram">
                                 <div class="cycle-step cycle-step-1">Need</div>
@@ -890,23 +1017,23 @@
             
             <!-- Slide 5: Types of Motives: By Origin & Content -->
             <div class="slide" id="slide-5">
-                <h1 class="slide-title">2. Types of Motives: By Origin & Content</h1>
+                <h1 class="slide-title slide-in-left">2. Types of Motives: By Origin & Content</h1>
                 <div class="content">
-                    <div class="text-content">
-                        <div class="motive-grid">
-                            <div class="motive-card">
+                    <div class="text-content slide-in-left">
+                        <div class="motive-grid stagger-animation">
+                            <div class="motive-card magnetic-effect">
                                 <h3 class="motive-title"><i class="fas fa-dna"></i> By Origin</h3>
                                 <p><span class="highlight">Innate (Biological):</span> Unlearned, physiological (e.g., hunger, thirst).</p>
                                 <p><span class="highlight">Learned (Social):</span> Acquired through experience (e.g., achievement, power).</p>
                             </div>
-                            <div class="motive-card">
+                            <div class="motive-card magnetic-effect">
                                 <h3 class="motive-title"><i class="fas fa-project-diagram"></i> By Content (Kovalev)</h3>
                                 <p><span class="highlight">Motives of Attraction:</span> Driven <em>towards</em> a positive state (e.g., success, love).</p>
                                 <p><span class="highlight">Motives of Avoidance:</span> Driven <em>away from</em> a negative state (e.g., failure, shame).</p>
                             </div>
                         </div>
                     </div>
-                    <div class="visual-content">
+                    <div class="visual-content slide-in-right">
                         <div class="graphic">
                             <div style="text-align: center;">
                                 <i class="fas fa-sitemap floating" style="font-size: 10rem; color: var(--accent);"></i>
@@ -925,24 +1052,24 @@
             
             <!-- Slide 6: Types of Motives: By Awareness -->
             <div class="slide" id="slide-6">
-                <h1 class="slide-title">2. Types of Motives: By Awareness</h1>
+                <h1 class="slide-title slide-in-left">2. Types of Motives: By Awareness</h1>
                 <div class="content">
-                    <div class="text-content">
+                    <div class="text-content slide-in-left">
                         <h2 class="slide-subtitle">By Level of Awareness</h2>
-                        <div class="motive-grid">
-                            <div class="motive-card">
+                        <div class="motive-grid stagger-animation">
+                            <div class="motive-card magnetic-effect">
                                 <h3 class="motive-title"><i class="fas fa-eye"></i> Conscious Motives</h3>
                                 <p>We are fully aware of what drives us.</p>
                                 <p><em>Example:</em> "I am working late to get a promotion."</p>
                             </div>
-                            <div class="motive-card">
+                            <div class="motive-card magnetic-effect">
                                 <h3 class="motive-title"><i class="fas fa-eye-slash"></i> Unconscious Motives</h3>
                                 <p>Hidden drivers that influence behavior outside our awareness.</p>
                                 <p><em>Example:</em> A deep-seated need for approval shaping career choices.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="visual-content">
+                    <div class="visual-content slide-in-right">
                         <div class="graphic">
                             <div style="text-align: center;">
                                 <i class="fas fa-brain floating" style="font-size: 10rem; color: var(--accent);"></i>
@@ -961,11 +1088,11 @@
             
             <!-- Slide 7: Hierarchy of Motives -->
             <div class="slide" id="slide-7">
-                <h1 class="slide-title">3. Hierarchy of Motives: Maslow's Pyramid</h1>
+                <h1 class="slide-title slide-in-left">3. Hierarchy of Motives: Maslow's Pyramid</h1>
                 <div class="content">
-                    <div class="text-content">
+                    <div class="text-content slide-in-left">
                         <h2 class="slide-subtitle">(From Base to Peak)</h2>
-                        <ol style="padding-left: 20px; font-size: 1.2rem;">
+                        <ol style="padding-left: 20px; font-size: 1.2rem;" class="stagger-animation">
                             <li><span class="highlight">Physiological Needs:</span> Food, water, warmth, rest.</li>
                             <li><span class="highlight">Safety Needs:</span> Security, safety, stability.</li>
                             <li><span class="highlight">Love & Belongingness:</span> Relationships, friends, family.</li>
@@ -973,7 +1100,7 @@
                             <li><span class="highlight">Self-Actualization:</span> Achieving one's full potential.</li>
                         </ol>
                     </div>
-                    <div class="visual-content">
+                    <div class="visual-content slide-in-right">
                         <div class="graphic">
                             <div class="pyramid">
                                 <div class="pyramid-level pyramid-level-1">Physiological</div>
@@ -995,12 +1122,12 @@
             
             <!-- Slide 8: Emotional-Volitional Sphere -->
             <div class="slide" id="slide-8">
-                <h1 class="slide-title">4. The Emotional-Volitional Sphere</h1>
+                <h1 class="slide-title slide-in-left">4. The Emotional-Volitional Sphere</h1>
                 <div class="content">
-                    <div class="text-content">
+                    <div class="text-content slide-in-left">
                         <h2 class="slide-subtitle">The Two Components:</h2>
-                        <div class="emotion-will">
-                            <div class="emotion">
+                        <div class="emotion-will stagger-animation">
+                            <div class="emotion magnetic-effect">
                                 <i class="fas fa-heart floating"></i>
                                 <h3>The Emotional Component (The Fuel)</h3>
                                 <p>Subjective reactions (Joy, Fear, Anger).</p>
@@ -1011,7 +1138,7 @@
                                 Human System
                             </div>
                             
-                            <div class="will">
+                            <div class="will magnetic-effect">
                                 <i class="fas fa-brain floating"></i>
                                 <h3>The Volitional Component (The Steering Wheel)</h3>
                                 <p>Will, self-control, deliberate action.</p>
@@ -1019,7 +1146,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="visual-content">
+                    <div class="visual-content slide-in-right">
                         <div class="graphic">
                             <div style="text-align: center;">
                                 <i class="fas fa-cogs floating" style="font-size: 10rem; color: var(--accent);"></i>
@@ -1038,22 +1165,22 @@
             
             <!-- Slide 9: The Interplay -->
             <div class="slide" id="slide-9">
-                <h1 class="slide-title">5. The Interplay: Fuel Meets Steering Wheel</h1>
+                <h1 class="slide-title slide-in-left">5. The Interplay: Fuel Meets Steering Wheel</h1>
                 <div class="content">
-                    <div class="text-content">
+                    <div class="text-content slide-in-left">
                         <h2 class="slide-subtitle">How Emotion and Will Interact:</h2>
-                        <div class="motive-grid">
-                            <div class="motive-card">
+                        <div class="motive-grid stagger-animation">
+                            <div class="motive-card magnetic-effect">
                                 <h3 class="motive-title"><i class="fas fa-fire"></i> Emotions Fuel Will</h3>
                                 <p>Passion provides energy for sustained effort.</p>
                             </div>
-                            <div class="motive-card">
+                            <div class="motive-card magnetic-effect">
                                 <h3 class="motive-title"><i class="fas fa-compress-arrows-alt"></i> Will Regulates Emotions</h3>
                                 <p>Controlling impulses; pushing through fatigue.</p>
                             </div>
                         </div>
                         
-                        <div style="background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 15px; margin-top: 30px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div style="background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 15px; margin-top: 30px; border: 1px solid rgba(255, 255, 255, 0.1);" class="magnetic-effect">
                             <h3 style="color: var(--accent); margin-bottom: 15px;">The Battlefield: Conflict of Motives</h3>
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 <div style="text-align: center;">
@@ -1071,7 +1198,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="visual-content">
+                    <div class="visual-content slide-in-right">
                         <div class="graphic">
                             <div style="text-align: center;">
                                 <i class="fas fa-handshake floating" style="font-size: 10rem; color: var(--accent);"></i>
@@ -1090,17 +1217,17 @@
             
             <!-- Slide 10: Key Takeaways -->
             <div class="slide" id="slide-10">
-                <h1 class="slide-title">Key Takeaways</h1>
+                <h1 class="slide-title slide-in-left">Key Takeaways</h1>
                 <div class="content">
-                    <div class="text-content">
-                        <ul style="font-size: 1.2rem;">
+                    <div class="text-content slide-in-left">
+                        <ul style="font-size: 1.2rem;" class="stagger-animation">
                             <li><span class="highlight">Needs</span> are deficiencies; <span class="highlight">Motives</span> are the directed forces to satisfy them.</li>
                             <li>Motives can be <span class="highlight">Innate/Learned</span>, for <span class="highlight">Attraction/Avoidance</span>, and <span class="highlight">Conscious/Unconscious</span>.</li>
                             <li>Motives exist in a <span class="highlight">Hierarchy</span> (Maslow); basic needs come first.</li>
                             <li>Personality is driven by the <span class="highlight">Emotional-Volitional Sphere</span>: <span class="highlight">Emotion</span> is the fuel, <span class="highlight">Will</span> is the steering wheel.</li>
                         </ul>
                     </div>
-                    <div class="visual-content">
+                    <div class="visual-content slide-in-right">
                         <div class="graphic">
                             <div style="text-align: center;">
                                 <i class="fas fa-lightbulb floating" style="font-size: 10rem; color: var(--accent);"></i>
@@ -1122,9 +1249,9 @@
                 <div class="content">
                     <div class="text-content">
                         <div class="thank-you">
-                            <h2>Thank You</h2>
-                            <p>GM 24-05</p>
-                            <div class="group-badge floating" style="margin-top: 30px;">
+                            <h2 class="bounce-in">Thank You</h2>
+                            <p class="bounce-in" style="animation-delay: 0.2s;">GM 24-05</p>
+                            <div class="group-badge floating" style="margin-top: 30px; animation-delay: 0.4s;">
                                 <i class="fas fa-users" style="margin-right: 10px;"></i> The Driving Forces Within
                             </div>
                         </div>
